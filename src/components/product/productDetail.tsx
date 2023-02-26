@@ -51,7 +51,6 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
           <Price>${price}</Price>
           <ProductAmount amount={amount} handleAmount={handleAmount} />
         </FlexBox>
-
         <BtnBox>
           <AddCart productId={id} amount={amount} />
           <AddLike productId={id} isLike={isLike} />

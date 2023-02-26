@@ -1,3 +1,4 @@
+import { memo } from "react";
 import styled from "styled-components";
 import { MinusIcon, PlusIcon } from "../../style/icons/icons";
 
@@ -23,7 +24,7 @@ const ProductAmount = ({ amount, id, handleAmount }: ProductAmountProps) => {
     </ControlAmount>
   );
 };
-export default ProductAmount;
+export default memo(ProductAmount);
 
 const ControlAmount = styled.div`
   width: fit-content;

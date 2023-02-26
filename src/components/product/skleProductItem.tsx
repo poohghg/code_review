@@ -1,3 +1,4 @@
+import { memo } from "react";
 import styled from "styled-components";
 import Skeleton from "../skeleton";
 
@@ -24,7 +25,7 @@ const SkleProductItem = () => {
   );
 };
 
-export default SkleProductItem;
+export default memo(SkleProductItem);
 
 const Item = styled.li``;
 
