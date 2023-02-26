@@ -1,5 +1,5 @@
 import { memo, useCallback, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled, { css, keyframes } from "styled-components";
 import { Path } from "./gnb";
 import Modal from "./modal";
@@ -11,7 +11,6 @@ interface MgnbProps {
 }
 
 const Mgnb = ({ paths, closeMenu, userId }: MgnbProps) => {
-  const navigate = useNavigate();
   const [isClose, setIsClose] = useState(false);
   const closeModal = () => setIsClose(true);
   const handleLink = useCallback(() => closeModal(), []);
