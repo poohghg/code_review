@@ -12,7 +12,7 @@ interface MgnbProps {
 
 const Mgnb = ({ paths, closeMenu, userId }: MgnbProps) => {
   const [isClose, setIsClose] = useState(false);
-  const closeModal = () => setIsClose(true);
+  const closeModal = useCallback(() => setIsClose(true), []);
   const handleLink = useCallback(() => closeModal(), []);
 
   const onAnimationEnd = () => {
