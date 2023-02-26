@@ -2,7 +2,7 @@ import { memo, SyntheticEvent, useCallback, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import useUser from "../hoc/useUser";
+import { useToLogin, useUser } from "../hoc";
 import { RootState } from "../redux";
 import Mgnb from "./mGnb";
 
@@ -18,7 +18,7 @@ const paths: Path[] = [
 ];
 
 // "
-const Icons: Path[] = [
+const iconsPaths: Path[] = [
   { to: "cart", pathName: "장바구니" },
   { to: "singUp", pathName: "회원가입" },
 ];
@@ -27,13 +27,14 @@ const Gnb = () => {
   const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
   const { pathname } = useLocation();
   const { onLogOut } = useUser();
+  const isToLoginPage = useToLogin();
   const userId = useSelector((state: RootState) => state.userReducer.userId);
 
   const handleLink = useCallback(
     (e: SyntheticEvent, to: string) => {
       if (to === "cart" && !userId) {
         e.preventDefault();
-        alert("접근권한이 없습니다.");
+        isToLoginPage();
       }
     },
     [userId],
@@ -50,7 +51,7 @@ const Gnb = () => {
           ))}
         </MenuUl>
         <MenuUl>
-          {Icons.map(({ pathName, to }) =>
+          {iconsPaths.map(({ pathName, to }) =>
             !!userId && to === "singUp" ? null : (
               <PathItem key={to} isActive={`/${to}` === pathname}>
                 <Link to={to} onClick={(e) => handleLink(e, to)}>
@@ -77,7 +78,7 @@ const Gnb = () => {
         <MobileMenu>
           {openMobileMenu ? (
             <Mgnb
-              paths={[...paths, ...Icons]}
+              paths={[...paths, ...iconsPaths]}
               closeMenu={() => setOpenMobileMenu(false)}
               userId={userId}
             />

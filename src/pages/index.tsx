@@ -26,7 +26,7 @@ const MainPage = () => {
   return (
     <>
       <PageTitle label="메인" />
-      <Wrap>
+      <Container>
         <MainProfile />
         <MainSwiper
           label="최근본 상품"
@@ -45,37 +45,13 @@ const MainPage = () => {
           cntLabel="판매수"
           isSuccess={isSuccess}
         />
-      </Wrap>
+      </Container>
     </>
   );
 };
 export default MainPage;
 
 const Container = styled.div`
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  /* 각 로우당 높이 */
-  /* grid-template-rows: 1fr 2fr; */
-  grid-auto-rows: 10vh;
-  /* 최소최대로 높이조절 */
-  grid-auto-rows: minmax(10vh, auto);
-  gap: 5px 10px;
-  grid-template-areas: "a a a" "a a a" "a a a";
-`;
-
-const Content = styled.div`
-  /* height: 5vh; */
-  display: flex;
-  background-color: red;
-  border: 1px solid black;
-  /* 일정영역을 차지 */
-  /* grid-column: ;
-    grid-row: ; */
-  /* grid-area: ; */
-`;
-
-const Wrap = styled.div`
   /* padding: 0 1.5rem; */
   max-width: 1400px;
   width: 100%;

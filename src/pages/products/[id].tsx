@@ -18,13 +18,9 @@ const ProductsDetailPage = () => {
       refetchOnMount: true,
       staleTime: 0,
       cacheTime: 0,
+      onSuccess: () => setIsHitUpdate(true),
     },
   );
-
-  useEffect(() => {
-    if (status === "success" && !isHitUpdate) setIsHitUpdate(true);
-  }, [status]);
-
   if (isLoading) return <AniLoading />;
   if (status !== "success") return null;
   return <ProductDetail product={data.product} />;
