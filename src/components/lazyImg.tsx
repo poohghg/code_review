@@ -18,7 +18,7 @@ const LazyImg = React.memo(
     const [isLoad, setIsLoad] = useState(false);
 
     const getObserver = useCallback(() => {
-      const options = {
+      const options: IntersectionObserverInit | undefined = {
         threshold: 0.01,
         ...pOtion,
       };

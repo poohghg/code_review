@@ -13,8 +13,6 @@ interface MgnbProps {
 const Mgnb = ({ paths, closeMenu, userId }: MgnbProps) => {
   const [isClose, setIsClose] = useState(false);
   const closeModal = useCallback(() => setIsClose(true), []);
-  const handleLink = useCallback(() => closeModal(), []);
-
   const onAnimationEnd = () => {
     if (isClose) closeMenu(true);
   };
@@ -27,7 +25,7 @@ const Mgnb = ({ paths, closeMenu, userId }: MgnbProps) => {
           {paths.map(({ to, pathName }) =>
             !!userId && to === "singUp" ? null : (
               <PathItem key={to}>
-                <Link to={to} onClick={handleLink}>
+                <Link to={to} onClick={closeModal}>
                   {pathName}
                 </Link>
               </PathItem>

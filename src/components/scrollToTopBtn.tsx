@@ -22,6 +22,14 @@ const ScrollToTopBtn = () => {
     let prevY = 0;
     const pageY = document.querySelector("#root") as HTMLElement;
     window.addEventListener("scroll", () => {
+      if (
+        window.scrollY === 0 &&
+        window.innerHeight + window.scrollY === pageY.scrollHeight
+      ) {
+        setIsShow(false);
+        return;
+      }
+
       if (window.innerHeight + window.scrollY === pageY.scrollHeight)
         setIsShow(true);
       else if (window.scrollY - prevY > 0 || window.scrollY === 0)
